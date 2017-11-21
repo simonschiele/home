@@ -1,0 +1,51 @@
+[core]
+    quotepath = off
+    editor = vim
+    whitespace=-indent-with-non-tab,trailing-space,cr-at-eol,tab-in-indent
+    # pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
+[user]
+    name = Simon Schiele
+[github]
+    username = simonschiele
+[merge]
+    tool = vimdiff
+    ff = only
+    log = true
+[diff]
+    renames = copies
+[diff "bin"]
+    textconv = hexdump -v -C
+[rerere]
+    enabled = true
+[status]
+    # submodulesummary = true
+[push]
+    default = current
+[color]
+    ui = auto
+    interactive = auto
+    branch = auto
+    diff = auto
+    grep = auto
+    interactive = auto
+    showbranch = auto
+    status = auto
+    pager = true
+[color "diff"]
+    whitespace = red reverse
+[alias]
+    contributors = shortlog --summary --numbered
+    filelog = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    graphviz = "!echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}';"
+    ignored = ls-files --others -i --exclude-standard
+    lastlog = log --color -n 20 --pretty=tformat:\"%h - %an, %ar : %s\" HEAD^1..HEAD
+    lasttag = describe --tags --abbrev=0
+    plog = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    praise = blame
+    serve = daemon --base-path=. --export-all --enable=receive-pack --reuseaddr --informative-errors --verbose
+    subupdate = submodule update --init --remote --recursive
+[include]
+    path = ~/.private/.gitconfig
+    path = ~/.private/gitconfig
+    path = ~/.work/.gitconfig
+    path = ~/.work/gitconfig
