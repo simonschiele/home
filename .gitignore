@@ -1,1 +1,9 @@
 *
+!.bash_completion.d/
+!.bash_completion.d/**
+!.bashrc.d/
+!.bashrc.d/**
+!.bin/
+!.bin/**
+!.icc/
+!.icc/**
