@@ -4,21 +4,9 @@
 [submodule ".config/awesome"]
 	path = .config/awesome
 	url = https://github.com/simonschiele/awesome.git
-[submodule ".lib/solarized"]
-	path = .lib/solarized
-	url = git://github.com/altercation/solarized.git
-[submodule ".lib/solarized-tmux"]
-	path = .lib/solarized-tmux
-	url = https://github.com/seebi/tmux-colors-solarized.git
-[submodule ".lib/solarized-dircolors"]
-	path = .lib/solarized-dircolors
-	url = https://github.com/seebi/dircolors-solarized.git
-[submodule ".lib/solarized-gnome-terminal"]
-	path = .lib/solarized-gnome-terminal
-	url = https://github.com/sigurdga/gnome-terminal-colors-solarized.git
-[submodule ".lib/vils-ng"]
-	path = .lib/vils-ng
-	url = https://github.com/simonschiele/vils-ng.git
 [submodule ".config/i3"]
 	path = .config/i3
 	url = https://github.com/simonschiele/dot.i3
+[submodule ".bin/vils-ng"]
+	path = .bin/vils-ng
+	url = https://github.com/simonschiele/vils-ng.git
