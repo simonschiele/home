@@ -113,6 +113,8 @@ function bashrc() {
             done
         done
     done
+
+    unset dir
 }
 
 bashrc "$@"
