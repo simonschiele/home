@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# shorthands
-alias h='history | grep -i'
-alias i='apt-get install'
 alias calc='bc -l'
 
-# 'pipe-stuff' (filter, sort, math, ...)
+alias date.format='date --help | sed -n "/^FORMAT/,/%Z/p"'
+alias date.timestamp='date +%s'
+alias date.week='date +%V'
+alias date.YY-mm-dd='date "+%Y-%m-%d"'
+alias date.YY-mm-dd_HH_MM='date "+%Y-%m-%d_%H-%M"'
+alias stopwatch='time read -n 1'
+
 alias avg='jq -s "add/length"'
 alias min='jq -s min'
 alias max='jq -s max'
@@ -13,15 +16,23 @@ alias max='jq -s max'
 alias filter.digit='grep -o "[0-9]*"'
 alias filter.ip='grep -o "[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}"'
 alias filter.temperature='grep -o "[+-][0-9]\{1,\}\.*[0-9]*°[CF]"'
-#alias filter.ipv6=
-#alias filter.mac=
 
-#alias strip.tags=
+alias strip.tags='sed -e "s|<[^>]*>||g"'
+
+alias random.ip='nmap -iR 1 -sL -n | grep.ip -o'
+alias random.mac='openssl rand -hex 6 | sed "s/\(..\)/\1:/g; s/.$//"'
+alias random.lotto='shuf -i 1-49 -n 6 | sort -n | xargs'
 
 # system
 alias sudo.lock='sudo -K'
 alias user.disable='passwd -dl'
 alias ps.by_memory='ps aux --sort -rss'
+
+# debian
+alias debian.version='lsb_release -a'
+alias debian.bugs='bts'
+alias debian.packages_by_size='dpkg-query -W --showformat="\${Installed-Size;10}\t\${Package}\n" | sort -k1,1n'
+alias debian.configfiles='dpkg-query -f "\n\${Package} \n\${Conffiles}\n" -W'
 
 # dev
 alias patch.from_diff='patch -Np0 -i'
