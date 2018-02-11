@@ -163,6 +163,62 @@ alias icons.list=show.icons
 
 # }}}
 
+function depends() {
+    local depends_name="$1"
+    local depends_type="${2:-bin}"
+    local available=false
+
+    case "$depends_type" in
+        bin|which|executable)
+            which "$depends_name" >/dev/null && available=true
+            ;;
+
+        dpkg|deb|debian)
+            depends dpkg || exit_error 'please install dpkg if you want to check depends via dpkg'
+            dpkg -l | grep -iq "^ii\ \ ${depends_name}\ " && available=true
+            ;;
+
+        pip)
+            local pip_version pip_output
+            depends pip || exit_error 'please install (python-)pip, to check depends via pip'
+
+            pip_version=$( pip --version | awk '{print $2}' )
+            if ( es_check_version 1.3 "$pip_version" ) ; then
+                pip_output=$( pip show "$depends_name" 2>/dev/null | xargs | awk '{print $3"=="$5}' | sed '/^==$/d' )
+            else
+                pip_output=$( pip freeze 2>/dev/null | grep "^${depends_name}=" )
+            fi
+
+            [[ -n "$pip_output" ]] && available=true
+            ;;
+
+        *)
+            depends "$depends_name" bin && available=true
+            ;;
+    esac
+
+    $available
+    return
+}
+
+function depends_first() {
+    local candidate candidate_cmd
+    local candidates="$*"
+    IFS=","
+
+    for candidate in $candidates ; do
+        candidate="${candidate##*( )}"
+        candidate="${candidate%%*( )}"
+        candidate_cmd=$( echo "$candidate" | cut -f'1' -d' ' )
+        if depends "$candidate_cmd" ; then
+            echo "$candidate"
+            return 0
+        fi
+    done
+
+    return 1
+}
+
 export BOOLEAN=(true false)
 export EXTENSIONS_VIDEO='avi,mkv,mp4,mpg,mpeg,wmv,wmvlv,webm,3g,mov,flv'
 export EXTENSIONS_IMAGES='png,jpg,jpeg,gif,bmp,tiff,ico,lzw,raw,ppm,pgm,pbm,psd,img,xcf,psp,svg,ai'
