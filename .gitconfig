@@ -20,6 +20,8 @@
     enabled = true
 [status]
     # submodulesummary = true
+[pull]
+    ff = only
 [push]
     default = current
 [color]
