@@ -37,6 +37,7 @@
 [color "diff"]
     whitespace = red reverse
 [alias]
+    fpush = push --force-with-lease
     contributors = shortlog --summary --numbered
     filelog = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     graphviz = "!echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}';"
