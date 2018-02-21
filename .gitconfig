@@ -56,6 +56,7 @@
         new = green bold
         whitespace = red reverse
 [alias]
+    color = !git -c color.status=always -c color.ui=always
     fpush = push --force-with-lease
     contributors = shortlog --summary --numbered
     filelog = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
