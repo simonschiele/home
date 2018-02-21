@@ -68,6 +68,7 @@
     subupdate = submodule update --init --remote --recursive
     one = show -s --pretty='format:%h (%s)'
     rlog = !sh -c 'git log --color \"$@\"|fmt -s -w 79|less -FRSX' _
+    initdefault = "!git init ; touch .gitignore README.md ; git add .gitignore README.md ; git commit .gitignore README.md -m 'Initial commit'"
 [url "git@bitbucket.com:"]
     insteadOf = bb:
 [cola]
