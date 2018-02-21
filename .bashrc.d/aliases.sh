@@ -26,6 +26,7 @@ alias random.lotto='shuf -i 1-49 -n 6 | sort -n | xargs'
 
 # system
 alias sudo.lock='sudo -K'
+alias udev.reload_rules='sudo udevadm control --reload-rules && sudo udevadm trigger'
 alias user.disable='passwd -dl'
 alias ps.by_memory='ps aux --sort -rss'
 
