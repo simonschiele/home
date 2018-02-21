@@ -13,6 +13,7 @@
     log = true
 [diff]
     renames = copies
+    compactionHeuristic = true
 [diff "bin"]
     textconv = hexdump -v -C
 [rerere]
