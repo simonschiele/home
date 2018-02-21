@@ -1,0 +1,9 @@
+[ui]
+username = Simon Schiele <simon.codingmonkey@gmail.com>
+tweakdefaults = True
+
+[extensions]
+progress =
+
+[diff]
+git = True
