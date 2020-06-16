@@ -1,0 +1,12 @@
+===================
+ Simons dotfiles
+===================
+
+This repo includes some of the dotfiles that make my workflow.
+i3 and vim config can be found in dedicated repos.
+
+
+Author
+======
+
+Simon Sciheke (simon.codingmonkey@gmail.com)
