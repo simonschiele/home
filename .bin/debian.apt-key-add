@@ -1,0 +1,12 @@
+#!/bin/bash
+
+LANG=C
+set -e
+
+function debian_apt_key_add() {
+    local keys=${1}
+    local server=${2:-keyserver.ubuntu.com}
+    sudo apt-key adv --keyserver "$server" --recv-keys "$keys"
+}
+
+debian_apt_key_add $*

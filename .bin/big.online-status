@@ -1,0 +1,23 @@
+#!/bin/bash
+
+last_status=
+new_status=
+
+while ( true )
+do
+    if ping -n -c 1 -4 -w 1 ${1:-8.8.8.8} >/dev/null 2>&1
+    then
+        new_status=online
+    else
+        new_status=offline
+    fi
+
+    if [[ "$new_status" != "$last_status" ]]
+    then
+        clear
+        toilet $new_status
+        last_status=$new_status
+    fi
+
+    sleep ${2:-3}
+done
