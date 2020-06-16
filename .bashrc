@@ -66,6 +66,12 @@ function include_once() {
     return 0
 }
 
+function include_once_if_existing() {
+    if [[ -e "$1" ]] ; then
+        include_once "$1"
+    fi
+}
+
 function bashrc() {
     local i file
 
@@ -84,6 +90,11 @@ function bashrc() {
 
     # source ~/.profile if not already done
     include_once "$HOME"/.profile
+
+    # source system-wide bashrc's if available
+    include_once_if_existing /etc/bash.bashrc
+    include_once_if_existing /etc/bashrc
+    include_once_if_existing /etc/.bashrc
 
     # build $PATH
     for dir in ${check_directories[*]} ; do

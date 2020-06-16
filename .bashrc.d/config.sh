@@ -6,7 +6,7 @@ function setup_history() {
 
     export HISTSIZE=5000
     export HISTFILESIZE=
-    export HISTCONTROL="ignoreboth:erasedups"
+    export HISTCONTROL='ignoreboth:erasedups'
     export HISTIGNORE='&:clear:ls:[bf]g:exit:hist:history:tree:w: '
     export HISTTIMEFORMAT='%F %T '
 
@@ -39,14 +39,16 @@ function setup_history() {
 }
 
 function setup_completion() {
-    # enable programmable completion features
-    if ! shopt -oq posix; then
-      if [ -f /usr/share/bash-completion/bash_completion ]; then
-        . /usr/share/bash-completion/bash_completion
-      elif [ -f /etc/bash_completion ]; then
-        . /etc/bash_completion
-      fi
-    fi
+    # Sadly the system-wide bash-completion can not get setup here, it breaks
+    # completion in a weird way if not sourced from the root of a script (?).
+    # Therefore we are doing only custom completion here. To enable the global
+    # completion I actually source my global /etc/bash.bashrc from my personal
+    # bashrc.
+
+    # include custom completions
+    for compl in $HOME/.bash_completion.d/* ; do
+        [[ -e $compl ]] && include_once "$compl"
+    done
 
     # completion case insensitive
     bind "set completion-ignore-case on"
@@ -58,11 +60,27 @@ function setup_completion() {
     bind "set show-all-if-ambiguous on"
 
     # lookup file for hostname completion
+    touch $HOME/.history/hosts
     export HOSTFILE="$HOME/.history/hosts"
 }
 
 function setup_colors() {
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    which colordiff >/dev/null && alias diff='colordiff'
+    which pacman >/dev/null && alias pacman='pacman --color=auto'
+
+    if ( which dircolors >/dev/null ) ; then
+        if [[ -r $HOME/.dircolors ]] ; then
+            eval "$( dircolors -b ~/.dircolors )"
+        else
+            eval "$( dircolors -b )"
+        fi
+    fi
+
     export GREP_COLOR='7;34'
+
+    export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
     export LESS_TERMCAP_mb=$'\e[01;31m'
     export LESS_TERMCAP_md=$'\e[01;37m'
@@ -71,18 +89,6 @@ function setup_colors() {
     export LESS_TERMCAP_so=$'\e[01;43;37m'
     export LESS_TERMCAP_ue=$'\e[0m'
     export LESS_TERMCAP_us=$'\e[01;32m'
-    depends "colordiff" && alias diff='colordiff'
-    depends "pacman" && alias pacman='pacman --color=auto'
-
-    # dircolors
-    if depends dircolors ; then
-        eval "$( dircolors -b )"
-
-        # dircolors (solarized)
-        if [ -r ~/.lib/dircolors-solarized/dircolors.256dark ] ; then
-            eval "$( dircolors ~/.lib/dircolors-solarized/dircolors.256dark )"
-        fi
-    fi
 }
 
 function setup_ssh() {
@@ -126,29 +132,24 @@ function setup_x11() {
 }
 
 function setup_applications() {
-    local browser='chromium, google-chrome, google-chrome-unstable, chrome, '
-          browser+='iceweasel, firefox, epiphany, opera, dillo'
-    local mailer='icedove, thunderbird'
-    local terminals='terminator, gnome-terminal, rxvt-unicode, rxvt, xterm'
-    local editors='vim.nox, vim, vi, emacs -nw, nano, joe, mcedit'
-    local x11_editors='gvim, vim.gnome, gedit, emacs, mousepad'
+    if ( which vim.nox >/dev/null ) ; then
+        EDITOR="vim.nox"
+    elif ( which vim >/dev/null ) ; then
+        EDITOR="vim"
+    else
+        EDITOR="vi"
+    fi
 
+    VISUAL="gvim"
     OPEN='gnome-open'
-    BROWSER="$( depends_first "$browser" )"
-    MAILER="$( depends_first "$mailer" )"
-    TERMINAL="$( depends_first "$terminals" )"
-    TZ="${TZ:-$( head -n1 /etc/timezone )}"
-    TZ="${TZ:-Europe/Berlin}"
 
-    EDITOR="$( depends_first "$editors" )"
-    VISUAL="$( depends_first "$x11_editors" )"
     SUDO_EDITOR="$EDITOR"
     GIT_EDITOR="$EDITOR"
     SVN_EDITOR="$EDITOR"
     PSQL_EDITOR="$EDITOR"
     PSQL_EDITOR_LINENUMBER_ARG='+'
 
-    if depends "less" ; then
+    if ( which less >/dev/null ) ; then
         PAGER="less -i"
         MANPAGER="less -X"   # no clear afterwards
     else
@@ -156,20 +157,16 @@ function setup_applications() {
         MANPAGER="more"
     fi
 
-    export OPEN BROWSER MAILER TERMINAL EDITOR VISUAL SUDO_EDITOR \
-           GIT_EDITOR SVN_EDITOR TZ PAGER MANPAGER PSQL_EDITOR \
-           PSQL_EDITOR_LINENUMBER_ARG
+    export OPEN EDITOR VISUAL SUDO_EDITOR GIT_EDITOR SVN_EDITOR PAGER \
+           MANPAGER PSQL_EDITOR PSQL_EDITOR_LINENUMBER_ARG
 
-    alias cp='cp -i -r'
-    alias grep='grep --color=auto'
-    alias ls='LC_COLLATE=C ls --color=auto --group-directories-first -p'
-    alias mkdir='mkdir -p'
+    alias vi='$EDITOR'
     alias mv='mv -i'
     alias rm='rm -i'
+    alias cp='cp -i -r'
+    alias mkdir='mkdir -p'
     alias screen='screen -U'
-    alias sudo='sudo '
     alias tmux='TERM=screen-256color-bce tmux'
-    alias vi='$EDITOR'
     alias wget='wget -c'
 }
 
@@ -188,9 +185,40 @@ function setup_shell() {
     #set -o noclobber                   # do not overwrite files by redirect
 }
 
+function setup_config() {
+    # contains stuff to handle home as a repo in seperate git-directory
+    #
+    # in the past I tracked my home directly in ~/.git/ with a gitignore that
+    # started with '*'. That worked great except for when it did not. Mostly
+    # some thirdparty software acted up when doing dir-walks. So no I'm trying
+    # the approach using an alias and my differently named .git/, which now is
+    # actually .cfg/. So far it feels ok and thirdparty software will not even
+    # notice that it is inside a repo.
+    #
+    # UPDATE: first downside: thirdparty software will not notice, but my
+    #         git-integration in the editor will also not :-(
+    #
+    alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+}
+
+function setup_exports() {
+    export BOOLEAN=(true false)
+    export EXTENSIONS_VIDEO='avi,mkv,mp4,mpg,mpeg,wmv,wmvlv,webm,3g,mov,flv'
+    export EXTENSIONS_IMAGES='png,jpg,jpeg,gif,bmp,tiff,ico,lzw,raw,ppm,pgm,pbm,psd,img,xcf,psp,svg,ai'
+    export EXTENSIONS_AUDIO='flac,mp1,mp2,mp3,ogg,wav,aac,ac3,dts,m4a,mid,midi,mka,mod,oma,wma,opus'
+    export EXTENSIONS_DOCUMENTS='asc,rtf,txt,abw,zabw,bzabw,chm,pdf,doc,docx,docm,odm,odt,ods,ots,sdw,stw,wpd,wps,pxl,sxc,xlsx,xlsm,odg,odp,pps,ppsx,ppt,pptm,pptx,sda,sdd,sxd,dot,dotm,dotx,mobi,prc,epub,prc,tpz,azw,azw1,azw3,azw4,kf8,lit,fb2,md,markdown,rst,pandoc'
+    export EXTENSIONS_ARCHIVES='7z,s7z,ace,arj,bz,bz2,bzip,bzip2,gz,gzip,lha,lzh,rar,r0,r00,tar,taz,tbz,tbz2,tgz,zip,rpm,deb,xz,iso'
+}
+
 function setup_workarounds() {
     # no accesibility gnome thingi
     export NO_AT_BRIDGE=1
+
+    # disable sticky mode
+    stty -ixon
+
+    # sudo fix
+    alias sudo='sudo '
 }
 
 function setup_bash() {
@@ -199,8 +227,10 @@ function setup_bash() {
     setup_colors
     # setup_ssh
     # setup_x11
-    # setup_applications
+    setup_applications
     setup_shell
+    setup_config
+    setup_exports
     setup_workarounds
 }
 
