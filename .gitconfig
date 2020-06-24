@@ -14,7 +14,7 @@
 [diff]
     tool = vimdiff
     renames = copies
-    compactionHeuristic = true
+    indentHeuristic = true
 [diff "bin"]
     textconv = hexdump -v -C
 [rerere]
