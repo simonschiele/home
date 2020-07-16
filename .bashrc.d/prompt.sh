@@ -92,7 +92,7 @@ function prompt_status_git() {
         untracked="$( color_ps1 red "?" )"
     fi
 
-    if [[ "${gitBranch}" == 'master' ]] ; then
+    if [[ "${gitBranch}" == 'master' ]] || [[ "${gitBranch}" == 'main' ]] ; then
         gitBranch=""
     else
         gitBranch="$gitBranch "
