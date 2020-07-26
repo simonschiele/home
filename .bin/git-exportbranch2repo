@@ -1,0 +1,93 @@
+#!/bin/bash
+#
+# Export copy of a branch into a new repository. Commit checksums will change
+# in the export. I use this when I commited something commercial/confidential
+# somewhere on a repo but later-on want to put a branch out in the open.
+#
+# Usage:
+# git exportbranch2repo <path_to_existing_repo_checkout> <branch> <path_to_new_repo>
+#
+# This will export the selected branch from the export directory and will
+# recreate the history of the branch on a new repo within the 'main' branch.
+#
+
+set -e
+
+function git_exportbranch2repo() {
+    local source_dir source_branch target_dir
+    local GIT_SOURCE GIT_TMP
+
+    source_dir="$1"
+    source_branch="$2"
+    target_dir="$3"
+
+    GIT_SOURCE="git --work-tree=$source_dir --git-dir=$source_dir/.git"
+    GIT_TMP="git --work-tree=${source_dir}_tmp --git-dir=${source_dir}_tmp/.git"
+
+    if [[ ! -d "$source_dir" ]] ; then
+        echo "Error: 'path_to_original_repo' not existing." >&2
+        echo "Please provide an existing path that points to the directory you want to export from." >&2
+        exit 1
+    fi
+
+    if [[ -z "$source_branch" ]] ; then
+        echo "Error: source_branch empty. Please provide a valid branch from the original repository." >&2
+        exit 1
+    fi
+
+    if [[ -e "$target_dir" ]] ; then
+        echo "Error: 'path_to_new_repo' existing." >&2
+        echo "Please provide a non-existing path for the new repository." >&2
+        exit 1
+    fi
+
+    if ! $GIT_SOURCE rev-parse --verify "$source_branch" >/dev/null 2>&1 ; then
+        echo "Error: Branch '$source_branch' not found in repo." >&2
+        exit 1
+    fi
+
+    if [[ -e "${source_dir}_tmp" ]] ; then
+        echo "Error: tmp source_dir '${source_dir}_tmp' already existing." >&2
+        exit 1
+    fi
+
+    if ! git clone -b "$source_branch" "$source_dir" "${source_dir}_tmp" ; then
+        echo "Error: tmp source_dir '${source_dir}_tmp' already existing." >&2
+        exit 1
+    fi
+
+    if ! mkdir "$target_dir" ; then
+        echo "Error: Couldn't create target_dir '$target_dir'." >&2
+        exit 1
+    fi
+
+    cd "$target_dir"
+    git init
+    git checkout -b main
+    cd "$OLDPWD"
+
+    for id in $( ( $GIT_TMP log --pretty=format:'%h' ; echo ) | tac ) ; do
+        cd "${source_dir}_tmp"
+        git checkout "$id" >/dev/null 2>&1
+        AUTHOR=$( git log -1 | grep '^Author: ' | sed 's/^Author: \(.*\) <.*$/\1/g' )
+        EMAIL=$( git log -1 | grep '^Author: ' | sed 's/^.*<\(.*\)>$/\1/g' )
+        DATE=$( git log -1 | grep '^Date: ' | sed 's/^Date:\ *\(.*\)/\1/g' )
+        MESSAGE=$( git log -1 | tail -n+5 | sed 's/^\ *//g' )
+
+        cd "$OLDPWD"
+
+        find "$target_dir" -mindepth 1 ! -path '*/.git/*' ! -path '*/.git' -delete
+        mv "${target_dir}/.git" "${target_dir}/.git_orig"
+        cp -r "${source_dir}_tmp/"* "${source_dir}_tmp/".[A-Za-z0-9_]* "${target_dir}/"
+        rm -rf "${target_dir}/.git"
+        mv "${target_dir}/.git_orig" "${target_dir}/.git"
+
+        cd "$target_dir"
+        git add .
+        GIT_AUTHOR_NAME="$AUTHOR" GIT_COMMITTER_NAME="$AUTHOR" GIT_AUTHOR_EMAIL="$EMAIL" GIT_COMMITTER_EMAIL="$EMAIL" GIT_AUTHOR_DATE="$DATE" GIT_COMMITTER_DATE="$DATE" git commit -a -m "$MESSAGE"
+        cd "$OLDPWD"
+    done
+}
+
+# shellcheck disable=SC2068
+git_exportbranch2repo $@
