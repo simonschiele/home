@@ -1,0 +1,102 @@
+#!/bin/bash
+#
+# control-wrapper for my running music
+#
+# It tries to find out what I'm using to listen to music and controls that
+# media player. It uses playerctl, a wrapper to control multiple music players
+# via dbus. I would prefer using it out of the box, but since I'm using
+# multiple player-types (spotify, mpd, ...), I want to have a bit smarter
+# logic to pick the player to control.
+#
+# Order:
+#  * If a player is in playing state - that one will be used.
+#  * If not, first available will be used.
+#  * If not available, players will be started in preferred order
+#  * If not available, player will be started in a "play"/"next"/...-scenario
+#
+# Order of preferred players:
+#  * $PREFERRED_PLAYER (ENV variable)
+#  * spotify
+#  * mpd
+#
+# todo: think about replacing playerctl by native calls - looks straight forward enough...
+# bindsym XF86AudioNext exec --no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+# bindsym XF86AudioPlay exec --no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+#
+# todo: persistence about last used player (maybe with cache-timeout)
+#
+
+set -e
+
+function get_player() {
+    local selected_player=""
+
+    for player in $( playerctl -l 2>/dev/null ) ; do
+        if [[ "$( playerctl -p "$player" status )" == "Playing" ]] ; then
+            echo "$player"
+            return
+        fi
+    done
+
+    for player in $( playerctl -l 2>/dev/null ) ; do
+        if [[ "$( playerctl -p "$player" status )" == "Paused" ]] ; then
+            echo "$player"
+            return
+        fi
+    done
+
+    # if no player 'Playing'
+    ( playerctl -l 2>/dev/null | grep "^${PREFERRED_PLAYER}$" ; playerctl -l 2>/dev/null ) \
+        | head -n1
+}
+
+function music() {
+    local action="$1"
+    local player player_cmd
+
+    if [[ -z "$action" ]] ; then
+        echo "Please provide action as argument or see help for details" >&2
+        exit 1
+    elif echo "$@" | grep -q -i -e '-h' -e 'help' ; then
+        echo "./$( basename "$0" ) <play|pause|play-pause|stop|next|...>"
+    fi
+
+    get_player
+    player=$( get_player )
+
+    if [[ -z "$player" ]] ; then
+        spotify >/dev/null 2>&1 &
+        sleep 2
+        player="spotify"
+    fi
+
+    player_cmd="playerctl -p $player"
+
+    case "$action" in
+        play)
+            $player_cmd play
+            ;;
+
+        play-pause|playpause)
+            $player_cmd play-pause
+            ;;
+
+        pause)
+            $player_cmd pause
+            ;;
+
+        stop)
+            $player_cmd stop
+            ;;
+
+        next)
+            $player_cmd next
+            ;;
+
+        prev|previous)
+            $player_cmd previous
+            ;;
+    esac
+}
+
+music "$@"
