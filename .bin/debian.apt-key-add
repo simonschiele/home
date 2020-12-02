@@ -3,10 +3,31 @@
 LANG=C
 set -e
 
+function usage() {
+    echo "$( basename "$0" ) - Add/Import APT repo key"
+    echo
+    echo "Usage:"
+    echo " ./$( basename "$0" ) <key> [keyserver]"
+}
+
 function debian_apt_key_add() {
-    local keys=${1}
-    local server=${2:-keyserver.ubuntu.com}
-    sudo apt-key adv --keyserver "$server" --recv-keys "$keys"
+    if echo "$*" | grep -q -i -e "\-h" -e "\-help" ; then
+        usage
+        exit 0
+    fi
+
+    if [[ -z "$1" ]] ; then
+        echo "No signature or url provided. See --help for details" >&2
+        exit 1
+    fi
+
+    if echo "$1" | grep -q -i "^http" ; then
+        wget "$1" -q -O - | sudo apt-key add -
+    else
+        local keys=${1}
+        local server=${2:-keyserver.ubuntu.com}
+        sudo apt-key adv --keyserver "$server" --recv-keys "$keys"
+    fi
 }
 
 debian_apt_key_add $*
