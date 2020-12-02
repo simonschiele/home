@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+#
+#
+
+WEBCAM_DEVICE=$( v4l2-ctl --list-devices | grep -A1 loopback | grep -o "/dev/video[0-9]*" | head -n1 )
+if [[ -z "$WEBCAM_DEVICE" ]] ; then
+    sudo modprobe v4l2loopback
+    WEBCAM_DEVICE=$( v4l2-ctl --list-devices | grep -A1 loopback | grep -o "/dev/video[0-9]*" | head -n1 )
+fi
+
+# video
+ffmpeg -re -i input.mov -f v4l2 $WEBCAM_DEVICE
+
+# videoloop
+ffmpeg -stream_loop -1 -re -i input.mov -f v4l2 $WEBCAM_DEVICE
+
+# image
+ffmpeg -loop 1 -re -i input.jpg -f v4l2 -vcodec rawvideo -pix_fmt yuv420p $WEBCAM_DEVICE
+
+# desktop
+ffmpeg -f x11grab -framerate 25 -video_size 1920x1080 -i :1 -f v4l2 $WEBCAM_DEVICE

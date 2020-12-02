@@ -1,0 +1,1 @@
+echo 1200 | sudo tee $( readlink -f /sys/class/bluetooth/hci0 )/../../../power/autosuspend

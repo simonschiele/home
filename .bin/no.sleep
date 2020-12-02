@@ -1,0 +1,4 @@
+#!/bin/bash
+( setterm -blank 0 ; setterm -powersave off ) 2>/dev/null
+xset -dpms
+systemctl --user stop xss-lock

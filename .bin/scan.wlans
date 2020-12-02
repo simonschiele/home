@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo iwlist scanning 2>/dev/null | grep ESSID | cut -f2 -d'"'

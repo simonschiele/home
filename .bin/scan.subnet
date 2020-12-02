@@ -1,0 +1,31 @@
+#!/bin/bash
+
+LANG=C
+set -e
+
+function scan_subnet() {
+    local subnets interface subnet
+
+    if ! which fping >/dev/null ; then
+        echo "fping not found" >&2
+        exit 1
+    fi
+
+    subnets="$*"
+
+    if [[ -z "$subnets" ]] ; then
+        for interface in $( ip route | grep ^default | awk '{print $5}' ) ; do
+            subnets+="$( ip addr show "$interface" | grep -o "inet [0-9\.]*" | grep -o "[0-9]*\.[0-9]*[0-9]*\.[0-9]*\." )0 "
+        done
+    fi
+
+    for subnet in $( echo "$subnets" | tr ' ' '\n' | sort -u ) ; do
+        if ! echo "$subnet" | grep -q '/' ; then
+            subnet="${subnet}/24"
+        fi
+        fping -adA -t 100 -g "$subnet" 2>/dev/null
+    done
+}
+
+# shellcheck disable=2068
+scan_subnet $@
