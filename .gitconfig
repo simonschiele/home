@@ -38,19 +38,21 @@
 [color "diff"]
     whitespace = red reverse
 [alias]
-    fpush = push --force-with-lease
     contributors = shortlog --summary --numbered
     filelog = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    fpush = push --force-with-lease
     graphviz = "!echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}';"
+    http2ssh = "!sed -i 's/url.*http.*simonschiele/url = git@github.com:simonschiele/g'"
     ignored = ls-files --others -i --exclude-standard
+    initdefault = "!git init ; touch .gitignore README.md ; git add .gitignore README.md ; git commit .gitignore README.md -m 'Initial commit'"
     lastlog = log --color -n 20 --pretty=tformat:\"%h - %an, %ar : %s\" HEAD^1..HEAD
     lasttag = describe --tags --abbrev=0
+    log-v = log --pretty=fuller
     plog = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     praise = blame
     serve = daemon --base-path=. --export-all --enable=receive-pack --reuseaddr --informative-errors --verbose
+    show-v = show --pretty=fuller
     subupdate = submodule update --init --remote --recursive
-    initdefault = "!git init ; touch .gitignore README.md ; git add .gitignore README.md ; git commit .gitignore README.md -m 'Initial commit'"
-    http2ssh = "!sed -i 's/url.*http.*simonschiele/url = git@github.com:simonschiele/g'"
 [url "git@bitbucket.com:"]
     insteadOf = bb:
 [include]
