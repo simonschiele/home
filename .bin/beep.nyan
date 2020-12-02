@@ -1,0 +1,309 @@
+#!/usr/bin/env sh
+#
+# author unknown to me, I got it from seb ;-)
+#
+
+#Takt 1
+beep -f 311 -l 75 -D 30
+beep -f 330 -l 75 -D 30
+beep -f 370 -l 150 -D 30
+beep -f 494 -l 75 -D 30
+beep -f 330 -l 75 -D 30
+beep -f 294 -l 75 -D 30
+beep -f 330 -l 75 -D 30
+beep -f 370 -l 75 -D 30
+beep -f 494 -l 75 -D 30
+beep -f 622 -l 75 -D 30
+beep -f 659 -l 75 -D 30
+beep -f 622 -l 75 -D 30
+beep -f 466 -l 75 -D 30
+beep -f 440 -l 150 -D 30
+#Takt 2
+beep -f 370 -l 150 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 330 -l 75 -D 30
+beep -f 370 -l 150 -D 30
+beep -f 494 -l 150 -D 30
+beep -f 554 -l 75 -D 30
+beep -f 466 -l 75 -D 30
+beep -f 494 -l 75 -D 30
+beep -f 554 -l 75 -D 30
+beep -f 659 -l 75 -D 30
+beep -f 622 -l 75 -D 30
+beep -f 659 -l 75 -D 30
+beep -f 554 -l 75 -D 30
+#Takt 3 hier loopen
+while [ true ]  
+do
+beep -f 740 -l 75 -D 30
+sleep 0.1
+beep -f 831 -l 75 -D 30
+sleep 0.1
+beep -f 294 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+sleep 0.1
+beep -f 277 -l 75 -D 30
+beep -f 294 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 277 -l 75 -D 30
+sleep 0.1
+#Takt 4
+beep -f 294 -l 75 -D 30
+sleep 0.1
+beep -f 294 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 740 -l 75 -D 30
+beep -f 831 -l 75 -D 30
+beep -f 294 -l 75 -D 30
+beep -f 740 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 294 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+#Takt 5
+beep -f 311 -l 75 -D 30
+sleep 0.1
+beep -f 740 -l 75 -D 30
+sleep 0.1
+beep -f 831 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 740 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 294 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 294 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+#Takt 6
+beep -f 294 -l 75 -D 30
+sleep 0.1
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 740 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 294 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+sleep 0.1
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 277 -l 75 -D 30
+sleep 0.1
+#Takt 7
+beep -f 740 -l 75 -D 30
+sleep 0.1
+beep -f 831 -l 75 -D 30
+sleep 0.1
+beep -f 294 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+sleep 0.1
+beep -f 277 -l 75 -D 30
+beep -f 294 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 277 -l 75 -D 30
+sleep 0.1
+#Takt 8
+beep -f 294 -l 75 -D 30
+sleep 0.1
+beep -f 294 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 740 -l 75 -D 30
+beep -f 831 -l 75 -D 30
+beep -f 294 -l 75 -D 30
+beep -f 740 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 294 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+#Takt 9
+beep -f 311 -l 75 -D 30
+sleep 0.1
+beep -f 740 -l 75 -D 30
+sleep 0.1
+beep -f 831 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 740 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 294 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 294 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+#Takt 10
+beep -f 294 -l 75 -D 30
+sleep 0.1
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 740 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 294 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+sleep 0.1
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 277 -l 75 -D 30
+sleep 0.1
+#Takt 11
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 185 -l 75 -D 30
+beep -f 208 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 185 -l 75 -D 30
+beep -f 208 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 330 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 330 -l 75 -D 30
+beep -f 370 -l 75 -D 30
+#Takt 12
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 185 -l 75 -D 30
+beep -f 208 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 185 -l 75 -D 30
+beep -f 370 -l 75 -D 30
+beep -f 156 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 165 -l 75 -D 30
+beep -f 156 -l 75 -D 30
+beep -f 165 -l 75 -D 30
+beep -f 185 -l 75 -D 30
+#Takt13
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 185 -l 75 -D 30
+beep -f 208 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 185 -l 75 -D 30
+beep -f 208 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 185 -l 75 -D 30
+beep -f 196 -l 75 -D 30
+beep -f 185 -l 75 -D 30
+#Takt 14
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 247 -l 75 -D 30
+beep -f 233 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 185 -l 75 -D 30
+beep -f 208 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 330 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 330 -l 75 -D 30
+beep -f 370 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 220 -l 75 -D 30
+sleep 0.1
+#Takt 15
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 185 -l 75 -D 30
+beep -f 208 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 185 -l 75 -D 30
+beep -f 208 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 330 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 330 -l 75 -D 30
+beep -f 370 -l 75 -D 30
+#Takt 16
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 185 -l 75 -D 30
+beep -f 208 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 185 -l 75 -D 30
+beep -f 370 -l 75 -D 30
+beep -f 156 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 165 -l 75 -D 30
+beep -f 156 -l 75 -D 30
+beep -f 165 -l 75 -D 30
+beep -f 185 -l 75 -D 30
+#Takt 17
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 185 -l 75 -D 30
+beep -f 208 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 185 -l 75 -D 30
+beep -f 208 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 277 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 185 -l 75 -D 30
+beep -f 196 -l 75 -D 30
+beep -f 185 -l 75 -D 30
+#Takt 18
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 247 -l 75 -D 30
+beep -f 233 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 185 -l 75 -D 30
+beep -f 208 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+beep -f 330 -l 75 -D 30
+beep -f 311 -l 75 -D 30
+beep -f 330 -l 75 -D 30
+beep -f 370 -l 75 -D 30
+beep -f 247 -l 75 -D 30
+sleep 0.1
+beep -f 220 -l 75 -D 30
+sleep 0.1
+done

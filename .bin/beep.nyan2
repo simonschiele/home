@@ -1,0 +1,309 @@
+#!/usr/bin/env sh
+#
+# author unknown to me, I got it from seb ;-)
+#
+
+#Takt 1
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 330 -l 75 -D 30
+sudo env -i beep -f 370 -l 150 -D 30
+sudo env -i beep -f 494 -l 75 -D 30
+sudo env -i beep -f 330 -l 75 -D 30
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 330 -l 75 -D 30
+sudo env -i beep -f 370 -l 75 -D 30
+sudo env -i beep -f 494 -l 75 -D 30
+sudo env -i beep -f 622 -l 75 -D 30
+sudo env -i beep -f 659 -l 75 -D 30
+sudo env -i beep -f 622 -l 75 -D 30
+sudo env -i beep -f 466 -l 75 -D 30
+sudo env -i beep -f 440 -l 150 -D 30
+#Takt 2
+sudo env -i beep -f 370 -l 150 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 330 -l 75 -D 30
+sudo env -i beep -f 370 -l 150 -D 30
+sudo env -i beep -f 494 -l 150 -D 30
+sudo env -i beep -f 554 -l 75 -D 30
+sudo env -i beep -f 466 -l 75 -D 30
+sudo env -i beep -f 494 -l 75 -D 30
+sudo env -i beep -f 554 -l 75 -D 30
+sudo env -i beep -f 659 -l 75 -D 30
+sudo env -i beep -f 622 -l 75 -D 30
+sudo env -i beep -f 659 -l 75 -D 30
+sudo env -i beep -f 554 -l 75 -D 30
+#Takt 3 hier loopen
+while [ true ]  
+do
+sudo env -i beep -f 740 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 831 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 277 -l 75 -D 30
+sleep 0.1
+#Takt 4
+sudo env -i beep -f 294 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 740 -l 75 -D 30
+sudo env -i beep -f 831 -l 75 -D 30
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 740 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+#Takt 5
+sudo env -i beep -f 311 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 740 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 831 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 740 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+#Takt 6
+sudo env -i beep -f 294 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 740 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 277 -l 75 -D 30
+sleep 0.1
+#Takt 7
+sudo env -i beep -f 740 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 831 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 277 -l 75 -D 30
+sleep 0.1
+#Takt 8
+sudo env -i beep -f 294 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 740 -l 75 -D 30
+sudo env -i beep -f 831 -l 75 -D 30
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 740 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+#Takt 9
+sudo env -i beep -f 311 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 740 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 831 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 740 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+#Takt 10
+sudo env -i beep -f 294 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 740 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 294 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 277 -l 75 -D 30
+sleep 0.1
+#Takt 11
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 208 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 208 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 330 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 330 -l 75 -D 30
+sudo env -i beep -f 370 -l 75 -D 30
+#Takt 12
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 208 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 370 -l 75 -D 30
+sudo env -i beep -f 156 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 165 -l 75 -D 30
+sudo env -i beep -f 156 -l 75 -D 30
+sudo env -i beep -f 165 -l 75 -D 30
+sudo env -i beep -f 185 -l 75 -D 30
+#Takt13
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 208 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 208 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 196 -l 75 -D 30
+sudo env -i beep -f 185 -l 75 -D 30
+#Takt 14
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 233 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 208 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 330 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 330 -l 75 -D 30
+sudo env -i beep -f 370 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 220 -l 75 -D 30
+sleep 0.1
+#Takt 15
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 208 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 208 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 330 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 330 -l 75 -D 30
+sudo env -i beep -f 370 -l 75 -D 30
+#Takt 16
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 208 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 370 -l 75 -D 30
+sudo env -i beep -f 156 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 165 -l 75 -D 30
+sudo env -i beep -f 156 -l 75 -D 30
+sudo env -i beep -f 165 -l 75 -D 30
+sudo env -i beep -f 185 -l 75 -D 30
+#Takt 17
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 208 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 208 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 277 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 196 -l 75 -D 30
+sudo env -i beep -f 185 -l 75 -D 30
+#Takt 18
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 233 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 185 -l 75 -D 30
+sudo env -i beep -f 208 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sudo env -i beep -f 330 -l 75 -D 30
+sudo env -i beep -f 311 -l 75 -D 30
+sudo env -i beep -f 330 -l 75 -D 30
+sudo env -i beep -f 370 -l 75 -D 30
+sudo env -i beep -f 247 -l 75 -D 30
+sleep 0.1
+sudo env -i beep -f 220 -l 75 -D 30
+sleep 0.1
+done
