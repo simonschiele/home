@@ -85,7 +85,7 @@ alias nmap.fast_udp='sudo nmap -sU --max-retries 1 --min-rate 5000 -p 1-65535'
 alias nmap.show_hosts='nmap -sP $( ip addr show dev $( ip route | grep "^default" | awk "{print $5}" ) | grep -o "[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\." | head -n 1 )0/24 | grep -v "^Host is" | sed "s/^Nmap scan report for //g"'
 
 # download
-alias youtube-dl='youtube-dl --no-call-home --no-check-certificate --ignore-errors --no-playlist'
+alias youtube-dl='youtube-dl -U ; youtube-dl --no-call-home --no-check-certificate --ignore-errors --no-playlist'
 alias youtube-dl.mp3='youtube-dl -x --audio-format mp3 --audio-quality 0'
 alias youtube-dl.playlist='youtube-dl --yes-playlist --playlist-start 1'
 alias youtube-dl.mp3_playlist='youtube-dl.mp3 --yes-playlist --playlist-start 1'
