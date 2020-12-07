@@ -98,7 +98,7 @@ function bashrc() {
 
     # build $PATH
     for dir in ${check_directories[*]} ; do
-        for i in {.,}bin BIN ; do
+        for i in .bin bin BIN ; do
             if [[ -d "$HOME/$dir"/"$i" ]] ; then
                debug "PATH $HOME/$dir/$i"
                PATH="$HOME/$dir/$i:$PATH"
