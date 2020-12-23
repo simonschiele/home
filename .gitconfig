@@ -3,6 +3,7 @@
     editor = vim
     whitespace=-indent-with-non-tab,trailing-space,cr-at-eol,tab-in-indent
     # pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
+    excludesfile = ~/.gitignore_global
 [user]
     name = Simon Schiele
 [github]

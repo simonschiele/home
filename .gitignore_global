@@ -1,0 +1,18 @@
+# Tags
+tags
+.tags
+!tags/
+ctags
+.ctags
+!ctags/
+TAGS
+.TAGS
+!TAGS/
+
+# IDE, editor and OS garbage
+Thumbs.db
+.idea
+*~
+.DS_Store
+.DS_Store?
+.Trashes
